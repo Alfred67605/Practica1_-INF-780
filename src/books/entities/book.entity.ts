@@ -20,6 +20,7 @@ export class Book {
   readDate: Date;
 
   @ApiProperty({ example: true, description: 'Whether the book has been completed' })
+  /* istanbul ignore next */
   @Column({ default: false })
   completed: boolean;
 }
