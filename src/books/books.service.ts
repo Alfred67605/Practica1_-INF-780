@@ -1,5 +1,5 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable, NotFoundException, Inject } from '@nestjs/common';
+import { InjectRepository, getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
@@ -8,7 +8,7 @@ import { Book } from './entities/book.entity';
 @Injectable()
 export class BooksService {
   constructor(
-    @InjectRepository(Book)
+    @Inject(getRepositoryToken(Book))
     private readonly booksRepository: Repository<Book>,
   ) {}
 
